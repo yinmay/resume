@@ -1,0 +1,443 @@
+/*global*/
+
+body,
+div,
+a,
+ul,
+li,
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+    font-family: myFont;
+    list-style: none;
+    text-decoration: none;
+    color: #333;
+}
+
+.layout {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.girl,
+.layout p,
+.layout h1,
+.layout h2,
+.lazyload-pic,
+.pinpin-pic,
+.btn-launch,
+.fa-chevron-left,
+.fa-chevron-right,
+.layout>a>i {
+    -webkit-animation: fadeInUp 1s .2s ease both;
+    -moz-animation: fadeInUp 1s .2s ease both;
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(20px)
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0)
+    }
+}
+
+@-moz-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -moz-transform: translateY(20px)
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: translateY(0)
+    }
+}
+
+@font-face {
+    font-family: 'myLogoFont';
+    src: url('../font/Queen of Heaven.ttf');
+    /* IE9 Compat Modes */
+    src: url('../font/Queen of Heaven.ttf') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/Queen of Heaven.ttf') format('woff'), /* Modern Browsers */
+    url('../font/Queen of Heaven.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../font/Queen of Heaven.ttf') format('svg');
+    /* Legacy iOS */
+}
+
+@font-face {
+    font-family: myFont;
+    src: url(../font/Berthold Akzidenz Grotesk BE Regular.otf);
+    src: url('../font/Berthold Akzidenz Grotesk BE Regular.otf') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/Berthold Akzidenz Grotesk BE Regular.otf') format('woff'), Modern Browsers url('../font/Berthold Akzidenz Grotesk BE Regular.otf') format('truetype'), /* Safari, Android, iOS */
+    url('../font/Berthold Akzidenz Grotesk BE Regular.otf') format('svg');
+}
+
+
+/*header*/
+
+#header {
+    margin-top: 10px;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    background: #fff;
+}
+
+#header .logo {
+    float: left;
+    padding-top: 6px;
+    padding-right: 18px;
+    font-family: "myLogoFont";
+    font-size: 32px;
+    color: #D6394A;
+}
+
+#header .bar {
+    display: block;
+    float: right;
+    margin: 6px;
+    padding: 8px;
+    font-size: 20px;
+    color: #D6394A;
+    font-weight: bold;
+}
+
+#header .bar:hover {
+    background-color: #f3e8e9;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 5px 5px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    color: #555;
+}
+
+.btn:hover {
+    color: white;
+    background-color: #D6394A;
+}
+
+
+/*header end*/
+
+
+/*content*/
+
+
+/*brief*/
+
+.brief {
+    margin-bottom: 20px;
+    background: #f7f7f7;
+}
+
+.brief .left-text {
+    float: left;
+}
+
+.brief .girl {
+    position: absolute;
+    float: right;
+    top: 100px;
+    margin-left: 300px;
+    width: 120px;
+}
+
+.brief .layout {
+    padding-bottom: 40px;
+}
+
+.brief h1,
+.brief p {
+    color: #333;
+}
+
+.brief h1 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    line-height: 45px;
+}
+
+.brief p {
+    width: 600px;
+    line-height: 25px;
+}
+
+
+/*brief end*/
+
+
+/*main*/
+
+.main .main-item {
+    float: left;
+    margin: 13px;
+    height: 360px;
+    width: 320px;
+    text-align: center;
+}
+
+.main ul {
+    margin-right: -22px;
+    margin-left: -22px;
+}
+
+.main .main-img {
+    margin-top: 4px;
+    width: 310px;
+    height: 250px;
+    border: 1px solid #eee;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.mask {
+    display: none;
+    position: relative;
+    top: -251px;
+    right: -1px;
+    width: 310px;
+    height: 250px;
+    background-color: rgba(255, 255, 255, 0.6);
+    transition: all ease-in 0.25s;
+}
+
+.mask div {
+    position: absolute;
+    top: 40%;
+    left: 22%;
+    padding: 20px 40px;
+    color: #fff;
+    text-align: center;
+    background: #D6394A;
+    border-radius: 4px;
+    font-size: 16px;
+    -webkit-box-sizing: padding-box;
+    box-sizing: padding-box;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.mask:before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mask:after {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.mask div {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main-item .overlay {
+    height: 250px;
+    width: 310px;
+    transition: 1s;
+    transition: all ease-in 0.25s;
+}
+.overlay img{
+    width: 50%
+}
+
+.main-item .overlay:hover .mask {
+    display: block;
+}
+
+.main-item h2 {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    line-height: 16px;
+}
+
+.main-item p {
+    display: block;
+    margin-top: 14px;
+    text-align: center;
+    line-height: 16px;
+    color: #666
+}
+
+
+/*main end*/
+
+
+/*aboutme*/
+
+.aboutme {
+    margin-top: 20px;
+    padding-bottom: 30px;
+    text-align: center;
+    background-color: #f7f7f7;
+    border-top: 1px solid #ccc;
+}
+
+.aboutme h1 {
+    padding-top: 40px;
+    line-height: 40px;
+}
+
+.aboutme .contact-info {
+    margin: 0 auto;
+}
+
+.aboutme .contact-info>li {
+    float: left;
+}
+
+.aboutme p {
+    line-height: 30px;
+}
+
+.aboutme .btn:hover {
+    border-color: white;
+}
+
+.aboutme .fa-github,
+.aboutme .fa-linkedin {
+    padding: 10px;
+    font-size: 30px;
+}
+
+.aboutme .fa-github:hover,
+.aboutme .fa-linkedin:hover {
+    color: #D6394A
+}
+
+
+/*aboutme end*/
+
+
+/*content end*/
+
+
+/*footer*/
+
+#footer {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    text-align: center;
+}
+
+
+/*footer end*/
+
+.go-top {
+    display: none;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    padding: 6px;
+    font-size: 36px;
+    color: #666;
+    border: 1px solid #666;
+    border-radius: 3px;
+}
+
+.go-top:hover {
+    color: white;
+    background-color: #D6394A;
+}
+
+@media screen and (max-width: 990px) {
+    .layout {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 660px;
+    }
+    /*    .mask div {
+        left: 22%;
+        transition: all ease-in 0.25s;
+    }*/
+    .girl {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 649px) {
+    .layout {
+        margin-left: 16px;
+    }
+    #header .logo {
+        margin-bottom: 10px;
+    }
+    .brief .girl {
+        display: block;
+        position: initial;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+    .brief p {
+        width: 80%;
+    }
+    .main .overlay,
+    .main .mask,
+    .main .main-item {
+        width: 100%
+    }
+    .main-item {
+        margin: 0 auto;
+    }
+    .mask div {
+        left: 37%;
+        transition: all ease-in 0.25s;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .mask div {
+        position: absolute;
+        left: 30%;
+        transition: all ease-in 0.25s;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .layout h1 {
+        font-size: 26px;
+        font-weight: bolder;
+    }
+    .mask div {
+        position: absolute;
+        left: 28%;
+        transition: all ease-in 0.25s;
+    }
+}
+
+
+/*
+.flex-container {
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  text-align: center;
+}*/

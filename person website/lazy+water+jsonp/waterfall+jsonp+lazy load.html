@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="w+j+l.css">
+</head>
+
+<body>
+    <div class="ct-waterfall">
+        <ul class="ct clearfix pic-ct">
+            <li class="item">
+                <a href="#"><img src="" alt=""></a>
+                <h3>熊猫集体上演“熊猫瘫”</h3>
+                <p>刚出生的23只大熊猫幼崽，被工作人员全部抱出来集体亮相。</p>
+            </li>
+        </ul>
+        <div class="load">看不见</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+    var clock;
+    $(window).on('scroll', function() {
+        if (clock) {
+            clearTimeout(clock)
+        }
+        clock = setTimeout(function() {
+            checkShow()
+        }, 100)
+    })
+
+    // 懒加载
+    checkShow();
+
+    function checkShow() {
+        if (isShow($('.load'))) {
+            loadAndPlace()
+        }
+    }
+
+    function isShow($node) {
+        var windowHeight = $(window).height(),
+            scrollTop = $(window).scrollTop(),
+            offsetTop = $node.offset().top,
+            nodeHeight = $node.height();
+        if (windowHeight + scrollTop > offsetTop && scrollTop < offsetTop + nodeHeight) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    // 获取数据，并且摆放位置
+    var curPage = 1,
+        perPageCount = 9;
+
+    function loadAndPlace() {
+        $.ajax({
+            url: 'http://platform.sina.com.cn/slide/album_tech',
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            data: {
+                app_key: '1271687855',
+                num: perPageCount,
+                page: curPage
+            }
+        }).done(function(ret) {
+            if (ret && ret.status && ret.status.code === "0") {
+                place(ret.data);
+            }
+        }).fail(function() {
+            console.log('获取数据失败');
+        })
+    }
+
+
+    function place(nodeList) {
+        console.log(nodeList)
+        var $nodes = renderData(nodeList)
+
+        var defereds = []
+        $nodes.find('img').each(function() {
+            var defer = $.Deferred() // 创建一个deferred对象
+            $(this).load(function() {
+                defer.resolve()
+            })
+            defereds.push(defer)
+        })
+        $.when.apply(null, defereds).done(function() { // 当全部图片加载后，执行下面的内容
+            console.log('图片全部加载')
+            waterFallPlace($nodes)
+        })
+    }
+    // 瀑布流
+    var nodeWidth = $('.item').outerWidth(true),
+        colNum = Math.floor($('.pic-ct').width() / nodeWidth),
+        colSumHeight = [];
+
+    for (var i = 0; i < colNum; i++) {
+        colSumHeight.push(0)
+    }
+
+    function waterFallPlace($nodes) {
+
+        $nodes.each(function() {
+            var $cur = $(this) //colSumHeight = [200,250,80,300]
+            var idx = 0,
+                minSumHeight = colSumHeight[0]; // 先定义数组第一项为最小的高度，然后遍历和它作比较
+            for (var i = 0; i < colSumHeight.length; i++) {
+                if (colSumHeight[i] < minSumHeight) {
+                    idx = i
+                    minSumHeight = colSumHeight[i]
+                }
+            }
+
+            $cur.css({
+                left: nodeWidth * idx,
+                top: minSumHeight,
+                opacity: 1
+            })
+            colSumHeight[idx] = $cur.outerHeight(true) + colSumHeight[idx]
+            $('.pic-ct').height(Math.max.apply(null, colSumHeight))
+        })
+    }
+    // <li class="item">
+
+    //           <a href="#"><img src="" alt=""></a>
+    //           <h3>熊猫集体上演“熊猫瘫”</h3>
+    //           <p>刚出生的23只大熊猫幼崽，被工作人员全部抱出来集体亮相。</p>
+
+    //   </li>
+
+
+
+    function renderData(items) {
+        var tpl = '',
+            $nodes;
+        for (var i = 0; i < items.length; i++) {
+            tpl += '<li class="item">'
+            tpl += '<a href="#" ><img src="' + items[i].img_url + '" alt=""></a>'
+            tpl += '<h3>' + items[i].short_name + '</h3>'
+            tpl += '<p>' + items[i].short_intro + '</p>'
+            tpl += '</li>'
+        }
+        $nodes = $(tpl)
+        $('.pic-ct').append($nodes)
+        return $nodes
+    }
+    </script>
+</body>
+
+</html>

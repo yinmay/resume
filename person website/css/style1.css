@@ -1,0 +1,245 @@
+/*brief*/
+
+.brief {
+    position: relative;
+}
+
+.brief p {
+    width: 300px;
+}
+
+.left-text p {
+    width: 300px;
+}
+
+.brief .lazyload-pic {
+    position: absolute;
+    top: 30px;
+    float: right;
+    margin-left: 100px;
+    width: 600px;
+}
+
+.brief .pinpin-pic {
+    position: absolute;
+    top: 30px;
+    float: right;
+    margin-left: 140px;
+    width: 360px;
+}
+
+#pinpin-text {
+    width: 500px;
+    height: 300px;
+}
+
+.brief .btn-launch {
+    display: inline-block;
+    margin: 30px;
+    margin-left: 2px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #666;
+    border-radius: 4px;
+    background-color: white;
+}
+
+.brief .btn-launch:hover {
+    color: white;
+    background-color: #D6394A;
+}
+
+
+/*brief end*/
+
+
+/*page*/
+
+.left-page,
+.left-page p,
+.left-page i {
+    float: left;
+    color: #D6394A
+}
+
+.right-page,
+.right-page p,
+.right-page i {
+    float: right;
+    color: #D6394A
+}
+
+.right-page p,
+.left-page p,
+.left-page i,
+.right-page i {
+    padding: 10px;
+}
+
+.left-page:hover,
+.right-page:hover {
+    background-color: #f3e8e9
+}
+
+.page {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee
+}
+
+
+/*page end*/
+
+
+/*sidebar*/
+
+.sidebar>img {
+    display: block;
+    float: left;
+    margin: 100px 40px;
+    width: 300px;
+}
+
+.sidebar .right-part {
+    float: right;
+    margin: 100px 10px;
+    text-align: right;
+}
+
+.sidebar h2 {
+    margin-bottom: 10px;
+    color: #D6394A;
+}
+
+.sidebar p {
+    padding-bottom: 10px;
+    width: 300px;
+    border-bottom: 1px solid #D6394A;
+}
+
+.sidebar .ksudi-icon {
+    display: block;
+    float: right;
+    margin-left: 100px;
+    margin-top: 26px;
+    margin-right: 0px;
+    width: 80px;
+}
+
+.sidebar .pinpin-icon {
+    display: block;
+    float: right;
+    margin-left: 100px;
+    margin-top: 26px;
+    margin-right: 0px;
+    width: 200px;
+}
+
+
+/*sidebar end*/
+
+
+/*guide page*/
+
+.guide-page img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    width: 600px;
+}
+
+
+/*guide-page end*/
+
+
+/*homepage*/
+
+.homepage .left-part {
+    float: left;
+    margin: 100px 10px;
+    text-align: left;
+}
+
+.homepage h2 {
+    margin-bottom: 10px;
+    color: #D6394A;
+}
+
+.homepage p {
+    padding-bottom: 10px;
+    width: 300px;
+    border-bottom: 1px solid #D6394A;
+}
+
+.homepage > img {
+    display: block;
+    float: right;
+    margin: 40px;
+    width: 300px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.allpage img {
+    display: block;
+    margin: 0 auto;
+    padding: 40px 0 40px 0;
+    width: 800px;
+}
+
+@media screen and (max-width: 1000px) {
+    .brief p {
+        width: 80%;
+    }
+    .lazyload-pic,
+    .pinpin-pic {
+        position: initial;
+        display: block;
+        margin-top: 50px;
+        margin: 0 auto;
+        width: 70%;
+    }
+    .sidebar img,
+    .homepage>img {
+        margin: 40px 0;
+        width: 40%;
+    }
+    .allpage img {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .pinpin-pic {
+        margin-right: 20px;
+    }
+    #pinpin-text {
+        width: 360px;
+    }
+    .lazyload,
+    .pinpin-pic {
+        position: initial;
+        display: block;
+        margin-top: 50px;
+        margin: 0 auto;
+        width: 70%;
+    }
+    .sidebar img,
+    .homepage>img {
+        float: none;
+        margin: 40px auto;
+        width: 60%;
+    }
+    .sidebar .right-part {
+        float: right;
+        margin: 0 10px 60px 10px;
+        text-align: right;
+    }
+    .guide-page img {
+        width: 90%
+    }
+    .homepage .left-part {
+        margin-bottom: 40px;
+    }
+}
+
+
+
