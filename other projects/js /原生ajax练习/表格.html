@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="username" placeholder="username">
+	<button id="btn">获取信息</button>
+
+	<dl id="ct">
+		<dt>性别：</dt>
+		<dd>女</dd>
+		<dt>年纪：</dt>
+		<dd>26</dd>
+	</dl>
+	
+	<input type="text" id="username2" placeholder="username">
+	<input type="text" id="yepe" placeholder="type">
+	<button id="btn2">获取信息</button>
+
+	<script type="text/javascript">
+
+
+
+//封装
+	function ajax(opts){
+
+		var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+					var json = JSON.parse(xmlhttp.responseText);
+					opts.success(json);
+				}
+				if (xmlhttp.status == 404) {
+					opts.error();
+				}
+			}
+			var dataStr = '';
+			for( var key in opts.data){
+				dataStr += key + '=' + opts.data[key] + '&';
+
+			}
+			//data={name:'hunger', age:100}
+			//str='name=hunger&age=100'
+			dataStr = dataStr.substr(0, dataStr.length-1);
+
+			if (opts.type.toLowerCase() === 'post') {
+				xmlhttp.open(opts.type, opts.url, true);
+				xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+				xmlhttp.send();
+			}
+			if(opts.type.toLowerCase() === 'get'){
+				xmlhttp.open(opts.type, opts.url + '?' + dataStr, true);
+				xmlhttp.send();
+			}
+
+	}
+
+
+
+	document.getElementById('btn2').addEventListener('click', function(){
+
+		ajax({
+			url:'use_ajax.php',
+			type: document.getElementById('type').value || 'get'
+			dataType: 'json', //text , json
+			data:{
+				username: document.getElementById('username2').value
+			},
+			success: function(data){
+				dealWith(data);
+			},
+			error: function(){
+				onError();
+			}
+		});
+	})
+
+
+		
+		document.getElementById('btn').addEventListener('click', function () {
+			// var username = document.getElementById('username').value;
+			// var url ='use_ajax.php' + '?username=' + username;
+
+			// var xmlhttp = new XMLHttpRequest();
+			// xmlhttp.onreadystatechange=function(){
+			// 	if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+			// 		var userInfo = JSON.parse(xmlhttp.responseText);
+			// 		dealWith(userInfo);
+			// 	}
+			// }
+			// xmlhttp.open('GET',url, true);
+			// xmlhttp.send();
+			ajax({
+				url:'use_ajax.php',
+				type: document.getElementById('type').value || 'get'
+				dataType: 'json', //text , json
+				data:{
+					username: document.getElementById('username2').value
+				},
+				success: function(data){
+					dealWith(data);
+				},
+				error: function(){
+					onError();
+				}
+			});
+		})
+
+		function onError(){
+			document.getElementById('ct').innerHTML = 'oh   出错了。。。。';
+		}
+
+		function dealWith (userInfo){
+		
+			var str = '<dt>性别：</dt>';
+			str += '<dd>' + userInfo.sex + '</dd>';
+			str += '<dt>年纪：</dt>';
+			str += '<dd>' + userInfo.age + '</dd>';
+			document.getElementById('ct').innerHTML = str;
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

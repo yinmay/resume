@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>server-mock使用说明</title>
+<style>
+  .container{
+    width: 900px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div id="getInfo">huoquxinxi</div>
+      
+    <button id="change">huanyizu</button>
+  </div>
+
+
+    
+    <script>
+     document.querySelector('#change').addEventListener('click', function(){
+      var script = document.createElement('script');//创建script标签
+      script.src = 'http://a.com/Info?callback=appendHtml'
+      document.head.appendChild(script);
+      // var xhr = new XMLHttpRequest();
+      // xhr.open('get','http://b.com:8080/getNews', true);
+      // xhr.send();
+      // xhr.onreadystatechange === function(){
+      //   if (xhr.readyState === 4 && xhr.status === 200 ) {
+      //     appendHtml(JSON.parse(xhr.responseText));
+      //     console.log(JSON.parse(xhr.responseText));
+      //   }
+      // }
+     })
+
+     function appendHtml(person){
+        var getInfo = document.querySelector('#getInfo');
+        getInfo.innerText = 'huoquxinxi'+person
+     }
+    </script>
+</body>
+</html>

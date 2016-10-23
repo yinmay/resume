@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>server-mock使用说明</title>
+
+</head>
+<body>
+  <p id="container"></p>
+
+  <input type="text" id="music-name">
+    <button id="btn">获取</button>
+
+    <textarea  id="article" cols="30" rows="10"></textarea>
+    <button id="btn2">tijiaowenzhang</button>
+
+
+    <script>
+
+      document.querySelector('#btn').addEventListener('click', function(){
+        var musicName = document.querySelector('#music-name').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'http://b.com:8080' + musicName,true);
+        xhr.send();
+
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState ===4 && status === 200) {
+            document.querySelector('#container').innerText = xhr.responseText;
+            console.log(xhr.responseText)//后端返回的数据在这个属性里面
+          }
+
+
+        }
+      })
+
+      document.querySelector('#btn2').addEventListener('click', function(){
+        //获取用户输入的值
+        var article = document.querySelector('#article').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', 'b.com',true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xhr.send("article="+ article);
+
+        xhr.onreadystatechange = function(){
+          if (xhr.readyState ===4 && status === 200) {
+            document.querySelector('#container').innerText = xhr.responseText;
+            console.log(xhr.responseText)//后端返回的数据在这个属性里面
+          }
+
+
+        }
+      })
+  
+  	</script>
+</body>
+</html>
