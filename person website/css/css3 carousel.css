@@ -1,0 +1,85 @@
+html,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #D6394A
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.carousel {
+    height: 500px;
+    width: 730px;
+    margin: 50px auto;
+}
+
+.carousel .img-ct > li {
+    position: absolute;
+    opacity: 0;
+}
+
+.carousel .img-ct img {
+    width: 730px;
+    height: 500px;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0
+    }
+    5% {
+        opacity: 1
+    }
+    20% {
+        opacity: 1
+    }
+    25% {
+        opacity: 0;
+    }
+}
+
+.carousel .img-ct > li:nth-child(1) {
+    animation: fade 12s linear 0s infinite;
+    -webkit-animation: fade 12s linear 0s infinite;
+    -moz-animation: fade 12s linear 0s infinite;
+    -o-animation: fade 12s linear 0s infinite;
+}
+
+.carousel .img-ct > li:nth-child(2) {
+    animation: fade 12s linear 3s infinite;
+    -webkit-animation: fade 12s linear 3s infinite;
+    -moz-animation: fade 12s linear 3s infinite;
+    -o-animation: fade 12s linear 3s infinite;
+}
+
+.carousel .img-ct > li:nth-child(3) {
+    animation: fade 12s linear 6s infinite;
+            -webkit-animation: fade 12s linear 6s infinite;
+        -moz-animation: fade 12s linear 6s infinite;
+        -o-animation: fade 12s linear 6s infinite;
+}
+
+.carousel .img-ct > li:nth-child(4) {
+    animation: fade 12s linear 9s infinite;
+            -webkit-animation: fade 12s linear 9s infinite;
+        -moz-animation: fade 12s linear 9s infinite;
+        -o-animation: fade 12s linear 9s infinite;
+}

@@ -199,8 +199,9 @@ p {
     margin-top: 4px;
     width: 310px;
     height: 250px;
-    border: 1px solid #eee;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
 }
 
 .mask {
@@ -212,6 +213,9 @@ p {
     height: 250px;
     background-color: rgba(255, 255, 255, 0.6);
     transition: all ease-in 0.25s;
+    -webkit-transition: all ease-in 0.25s;
+    -moz-transition: all ease-in 0.25s;
+    -o-transition: all ease-in 0.25s;
 }
 
 .mask div {
@@ -224,10 +228,13 @@ p {
     background: #D6394A;
     border-radius: 4px;
     font-size: 16px;
-    -webkit-box-sizing: padding-box;
     box-sizing: padding-box;
-    -webkit-transition: all 0.2s ease-out;
+    -webkit-box-sizing: padding-box;
+    -moz-box-sizing: padding-box;
     transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
 }
 
 .mask:before {
@@ -252,10 +259,13 @@ p {
 .main-item .overlay {
     height: 250px;
     width: 310px;
-    transition: 1s;
     transition: all ease-in 0.25s;
+    -webkit-transition: all ease-in 0.25s;
+    -moz-transition: all ease-in 0.25s;
+    -o-transition: all ease-in 0.25s;
 }
-.overlay img{
+
+.overlay img {
     width: 50%
 }
 
@@ -353,6 +363,8 @@ p {
     color: #666;
     border: 1px solid #666;
     border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
 }
 
 .go-top:hover {
@@ -366,10 +378,6 @@ p {
         margin-right: auto;
         max-width: 660px;
     }
-    /*    .mask div {
-        left: 22%;
-        transition: all ease-in 0.25s;
-    }*/
     .girl {
         display: none;
     }
@@ -402,6 +410,9 @@ p {
     .mask div {
         left: 37%;
         transition: all ease-in 0.25s;
+        -webkit-transition: all ease-in 0.25s;
+        -moz-transition: all ease-in 0.25s;
+        -o-transition: all ease-in 0.25s;
     }
 }
 
@@ -409,7 +420,6 @@ p {
     .mask div {
         position: absolute;
         left: 30%;
-        transition: all ease-in 0.25s;
     }
 }
 
@@ -421,23 +431,5 @@ p {
     .mask div {
         position: absolute;
         left: 28%;
-        transition: all ease-in 0.25s;
     }
 }
-
-
-/*
-.flex-container {
-  list-style: none;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-.flex-item {
-  text-align: center;
-}*/
